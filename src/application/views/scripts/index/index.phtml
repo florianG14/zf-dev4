@@ -1,1 +1,7 @@
-<h1>Index.phtml</h1>
+<h1>Liste des 10 derniers films</h1>
+<?php //var_dump($this->film);
+
+foreach ($this->film as $film) { ?>
+    <h3><?= $film->getTitle() ?></h3>
+    <p><?= $film->getDescription() ?></p>
+<?php }?>
