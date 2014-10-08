@@ -2,6 +2,10 @@
 <?php //var_dump($this->film);
 
 foreach ($this->film as $film) { ?>
-    <h3><?= $film->getTitle() ?></h3>
+    <h2>
+    	<a href="/index/film/filmid/<?= $film->getFilmId() ?>">
+    	   <?= $film->getTitle() ?>
+    	</a>
+    </h2>
     <p><?= $film->getDescription() ?></p>
 <?php }?>

@@ -54,6 +54,14 @@ class Model_Film
      * @var string
      */
     private $lastUpdate;
+    /**
+     * @var array
+     */
+    private $categories;
+    /**
+     * @var array
+     */
+    private $actors;
 	/**
      * @return the $filmId
      */
@@ -277,5 +285,28 @@ class Model_Film
         $this->lastUpdate = $lastUpdate;
         return $this;
     }
-
+    
+    public function getCategories()
+    {
+        // on verifie deja s'il il existe
+        if(null === $this->categories){
+            // on recupere le mapper des categories
+            $categoryMapper = new Model_Mapper_Category;
+            // on insere ce que l'on recupere avec le mapper
+            $this->categories = $categoryMapper->fetchByFilm($this->filmId);
+        }
+        return $this->categories;
+    }
+    
+    public function getActor()
+    {
+        // on verifie deja s'il il existe
+        if(null === $this->actors){
+            // on recupere le mapper des categories
+            $actorMapper = new Model_Mapper_Actor;
+            // on insere ce que l'on recupere avec le mapper
+            $this->actors = $actorMapper->fetchByFilm($this->filmId);
+        }
+        return $this->actors;
+    }
 }

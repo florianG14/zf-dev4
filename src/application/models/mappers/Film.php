@@ -86,6 +86,7 @@ class Model_Mapper_Film
              ->setRating($data['rating'])
              ->setSpecialFeatures($data['special_features'])
              ->setLastUpdate($data['last_update']);
+             //->setActor(actorAction());
         return $film;
     }
     
@@ -97,4 +98,16 @@ class Model_Mapper_Film
         }
         return $this->filmTable;
     }
+    
+    // pour les acteurs
+ /*   public function actorAction($filmId)
+    {
+        $actorId = (int) $this->getRequest()->getParam('actor_id');
+        $actorApi = new Service_Actor;
+        $this->view->actor = $actorApi->find($actorId, $filmId);
+        if (!$this->view->actor) {
+            // on assigne un message à afficher lorsque l'on va avoir ce type d'erreur
+            throw new Zend_Controller_Action_Exception('Acteur inexistant', 404);
+        }
+    }*/
 }
